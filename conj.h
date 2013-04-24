@@ -30,7 +30,7 @@ void Comple_Conj(const ELEMENTO *conjunto, const ELEMENTO *conjunto2, ELEMENTO *
       en el conjunto pasado como 3 parametro */
 /* ------------------ prototipos de conjcar.h ------------------- */
 
-
+// Inicializa el conjunto con las 26 letras del abecedario y con cero su número de repeticiones.
 void CrearConjunto (ELEMENTO *conjunto) {
    int a;
    for (a=0; a<26; a++, conjunto++) {
@@ -39,6 +39,9 @@ void CrearConjunto (ELEMENTO *conjunto) {
    }
 }
 
+// Recibe el conjunto al cual agregar el caracter recibido.
+// Lo busca iterando en el array de caracteres (abecedario).
+// Si lo encuentra lo agrega, incrementando el número de repeticiones del caracter.
 void Poner (ELEMENTO *conjunto, char caracter) {
    int a;
    for (a=0; a<26; a++) {
@@ -50,6 +53,8 @@ void Poner (ELEMENTO *conjunto, char caracter) {
    }
 }
 
+// Muestra por pantalla el conjunto pasado. Lo imprime en dos columnas de 13 elementos cada una.
+// Imprime la letra, seguido el número de repeticiones de esta.
 void Ver (ELEMENTO *conjunto) {
    int a;
    clrscr();
@@ -60,6 +65,9 @@ void Ver (ELEMENTO *conjunto) {
    }
 }
 
+// Verifica si el caracter recibido pertenece al conjunto recibido.
+// Pertenece(devuelve 1) si el caracter introducido está en el conjunto y a la vez aparece por lo menos una vez.
+// No pertenece (devuelve 0).
 int Pertenece (ELEMENTO *conjunto, char caracter) {
    int a;
    for (a=0; a<26; a++, conjunto++) {
@@ -70,23 +78,32 @@ int Pertenece (ELEMENTO *conjunto, char caracter) {
     return 0;
 }
 
+// "Une" los conjuntos con ayuda de un tercer conjunto al cual se le afecta el número de repeticiones.
+// Un elemento pertenece a un conjunto si el número de repeticiones es diferente de cero.
+// Asigna a número de veces del conjunto auxiliar la suma de el número de veces de los otros dos conjuntos
+// con respecto a una letra, así hasta terminar de iterar sobre las 26 letras.
 void Union_Conj (const ELEMENTO *conjunto, const ELEMENTO *conjunto2, ELEMENTO *resultado) {
    int a;
    for (a=0; a<26; a++, resultado++, conjunto++, conjunto2++)
       (resultado->n_veces) = (conjunto->n_veces) + (conjunto2->n_veces);
 }
 
+// Verifica que tanto en el primer como el segundo conjunto el caracter revisado este por lo menos una vez.
+// Si cumple la condición se asigna al número de veces del conjunto resultado la suma de los otros dos.
 void Inters_Conj(const ELEMENTO *conjunto, const ELEMENTO *conjunto2, ELEMENTO *resultado) {
    int a;
-   for (a=0; a<26; a++, conjunto++, conjunto2++, resultado++) { 
+   for (a=0; a<26; a++, conjunto++, conjunto2++, resultado++) {
       if( ((conjunto->n_veces)>0) && ((conjunto2->n_veces)>0) )
          resultado->n_veces = (conjunto->n_veces) + (conjunto2->n_veces);
    }
 }
 
+// Itera a traves de los conjuntos y si el el número de veces del caracter es cero en el conjunto resultado
+// le asigna lo del otro conjunto (complemento).
 void Comple_Conj(const ELEMENTO *conjunto, const ELEMENTO *conjunto2, ELEMENTO *resultado) {
    int a;
    for (a=0; a<26; a++, resultado++, conjunto++, conjunto2++)
       if ((conjunto->n_veces)==0)
          resultado->n_veces = conjunto2->n_veces;
-}   
+}
+
