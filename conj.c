@@ -3,6 +3,17 @@
 #include <conio.h>
 #include "conj.h"
 
+/*
+ * Programa que realiza operaciones con conjuntos de caracteres.
+ * Crear Conjuntos (2 con todos los caracteres del alfabeto),
+ * Añadir caracter, (a cualquiera de los dos conjuntos creados)
+ * Ver Conjunto, (muestra un conjunto mostrando el número de veces que aparece un caracter)
+ * Pertenencia, (verifica si un caracter se encuentra en un conjunto determinado)
+ * Unión, (realiza la operación de unión de conjuntos)
+ * Intersección, (realiza la operación de intersección de conjuntos)
+ * Complemento. (realiza la operación del complemento de un conjunto tomando como universo al otro conjunto)
+ */
+
 char menu(void);
 void pausa(void);
 
@@ -40,7 +51,7 @@ int main(void) {
             switch(opcion) {
                case '1':
                   Ver(conjunto); break;
-               case '2': 
+               case '2':
                   Ver(conjunto2); break;
                default:
                   printf("\nOpcion incorrecta\n");
@@ -50,7 +61,7 @@ int main(void) {
          case '4':
             printf("Introduce letra: "); fflush(stdout);
             letra = getche();
-            printf(" Introduce conjunto: "); fflush(stdout); 
+            printf(" Introduce conjunto: "); fflush(stdout);
             opcion = getche();
             switch(opcion) {
                case '1':
@@ -134,5 +145,5 @@ void pausa(void) {
    printf("\nPulsa una tecla para continuar\n");
    getch();
 }
-   
+
 
