@@ -1,4 +1,5 @@
 /* conjunto de caracteres */
+#include <cstdlib> // para el system, lo único necesario para que compile en c++
 #include <stdio.h>
 #include <conio.h>
 #include "conj.h"
